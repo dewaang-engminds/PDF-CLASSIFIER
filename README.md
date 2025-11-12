@@ -22,3 +22,14 @@ pip install -r requirements.txt
 
 # 5️⃣ Run CLI
 python main.py --input data/pdfs --output data/output --config config/env.yaml
+
+**HOW TO USE**
+
+****✅ How users will now install and run****
+**🔹 Local installation**
+git clone https://github.com/deewang/categorize.git
+cd categorize
+pip install .
+
+**🔹 Run the CLI**
+categorize --config config/env.yaml
