@@ -8,7 +8,7 @@ version = "1.0.0"
 description = "AI-driven PDF categorization CLI + FastAPI service"
 authors = [{ name = "Deewang Mathur" }]
 readme = "README.md"
-license = { text = "MIT" }
+license = "MIT"
 requires-python = ">=3.9"
 
 dependencies = [
@@ -28,3 +28,6 @@ Issues = "https://github.com/dewaang-engminds/PDF-CLASSIFIER/issues"
 
 [project.scripts]
 categorize = "main:cli"
+
+[tool.setuptools.packages.find]
+include = ["api", "config", "pipeline", "utils"]
