@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <!-- ✅ Fixes meta-viewport error -->
+  <title>CATEGORIZE Frontend</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    textarea { width: 100%; height: 200px; }
+    pre { background: #f7f7f7; padding: 10px; border: 1px solid #ddd; }
+    label { display: block; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>CATEGORIZE — PDF Classifier</h2>
+  <p>Upload a PDF and optionally provide a YAML config.</p>
+
+  <!-- ✅ Adds 'for' attributes and accessible labels -->
+  <label for="config">YAML Config (optional):</label>
+  <textarea id="config" placeholder="Paste YAML config here (optional)"></textarea><br/><br/>
+
+  <!-- ✅ Adds accessible label & title -->
+  <label for="pdf">Upload PDF:</label>
+  <input type="file" id="pdf" accept="application/pdf" title="Select a PDF file to classify" /><br/><br/>
+
+  <label for="input_mode">Input Mode:</label>
+  <select id="input_mode" name="input_mode" title="Choose input mode">
+    <option value="local">local</option>
+    <option value="s3">s3</option>
+  </select>
+
+  <label for="output_mode">Output Mode:</label>
+  <select id="output_mode" name="output_mode" title="Choose output mode">
+    <option value="local">local</option>
+    <option value="s3">s3</option>
+  </select><br/><br/>
+
+  <button id="uploadBtn">Classify</button>
+
+  <h3>Result:</h3>
+  <pre id="output" aria-live="polite"></pre> <!-- ✅ Makes output screen-reader friendly -->
+
+  <script>
+    document.getElementById("uploadBtn").onclick = async function() {
+      const file = document.getElementById("pdf").files[0];
+      if (!file) { alert("Select a PDF first!"); return; }
+
+      const config = document.getElementById("config").value;
+      const input_mode = document.getElementById("input_mode").value;
+      const output_mode = document.getElementById("output_mode").value;
+
+      const form = new FormData();
+      form.append("file", file);
+      form.append("config_text", config);
+      form.append("input_mode", input_mode);
+      form.append("output_mode", output_mode);
+
+      const res = await fetch("http://127.0.0.1:8000/classify/", {
+        method: "POST",
+        body: form
+    });
+
+      const data = await res.json();
+      document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html>
+
+<!-- to use this above code:- -->
+<!-- python -m http.server 3000 -->

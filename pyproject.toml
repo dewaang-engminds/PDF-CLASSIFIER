@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "categorize"
+version = "1.0.0"
+description = "AI-driven PDF categorization CLI + FastAPI service"
+authors = [{ name = "Deewang Mathur" }]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+
+dependencies = [
+    "click",
+    "fastapi",
+    "uvicorn",
+    "markitdown",
+    "pandas",
+    "matplotlib",
+    "pyyaml",
+    "boto3",
+]
+
+[project.urls]
+Homepage = "https://github.com/dewaang-engminds/PDF-CLASSIFIER.git"
+Issues = "https://github.com/dewaang-engminds/PDF-CLASSIFIER/issues"
+
+[project.scripts]
+categorize = "main:cli"

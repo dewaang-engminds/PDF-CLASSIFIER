@@ -1,0 +1,55 @@
+# ==============================
+# 🧠 CATEGORIZE PROJECT GITIGNORE
+# ==============================
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache / compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.pkl
+*.log
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.code-workspace
+
+# Build / packaging files
+build/
+dist/
+*.egg-info/
+.eggs/
+*.spec
+
+# Local data folders
+data/
+output/
+temp/
+uploads/
+
+# Deployment / project notes
+deploy.txt
+selected_deploy.txt
+extra.txt
+about.txt
+folder_structure.txt
+main_old.py
+keywords.py
+
+# Miscellaneous / test artifacts
+*.bak
+*.tmp
+*.swp
+*.sqlite3

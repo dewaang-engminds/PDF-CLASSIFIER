@@ -1,0 +1,9 @@
+markitdown[all]
+fastapi
+uvicorn[standard]
+click
+pyyaml
+boto3
+pandas
+matplotlib
+python-multipart
