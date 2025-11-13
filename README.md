@@ -28,37 +28,126 @@ pip install -r requirements.txt
 
 # 5️⃣ Run the CLI
 python main.py --input data/pdfs --output data/output --config config/env.yaml
-🚀 Installation & Usage
+
+
+**🚀 Installation & Usage**
+
 🔹 Option 1 — Local Installation (Recommended)
-bash
-Copy code
-# Clone the repository
+1️⃣ Clone the repository
+Windows PowerShell
 git clone https://github.com/dewaang-engminds/PDF-CLASSIFIER.git
 cd PDF-CLASSIFIER
 
-# Create and activate a virtual environment
-python -m venv venv
-venv\Scripts\activate     # Windows
-# or
-source venv/bin/activate  # Mac/Linux
+Mac/Linux Bash
+git clone https://github.com/dewaang-engminds/PDF-CLASSIFIER.git
+cd PDF-CLASSIFIER
 
-# Install the package
+2️⃣ Create & activate a virtual environment
+Windows PowerShell
+python -m venv venv
+venv\Scripts\activate
+
+Mac/Linux Bash
+python3 -m venv venv
+source venv/bin/activate
+
+3️⃣ Install the package
+Both PowerShell & Bash
 pip install .
-▶️ Run CLI
-bash
-Copy code
+
+▶️ Using the CLI
+Windows PowerShell
 categorize --config config/env.yaml
-▶️ Run API
-bash
-Copy code
+
+Mac/Linux Bash
+categorize --config config/env.yaml
+
+
+Example with input & output paths:
+
+categorize --input data/pdfs --output data/output --config config/env.yaml
+
+▶️ Running the API Server
+
+You can run via the CLI:
+
+PowerShell
 categorize api
-# Open http://127.0.0.1:8000/docs
-▶️ Run Frontend
-bash
-Copy code
-categorize ui
-# Open http://127.0.0.1:3000/
-🌟 Option 2 — Using pipx (Best for CLI Tools)
+
+Bash
+categorize api
+
+
+Then open:
+
+http://127.0.0.1:8000/docs
+
+
+Best practice:
+✔ Keep terminal open
+✔ Upload PDFs via Swagger UI
+✔ Monitor logs in the console
+
+▶️ Running the Frontend (Local Development)
+
+The frontend is static HTML. You run a tiny local server:
+
+Windows PowerShell
+cd frontend
+python -m http.server 3000
+
+Mac/Linux Bash
+cd frontend
+python3 -m http.server 3000
+
+
+Now open:
+
+http://127.0.0.1:3000/app.html
+
+
+This frontend will interact with your API at:
+
+http://127.0.0.1:8000/classify/
+
+🟢 Best Practices for Frontend + API
+✔ Run frontend and API in separate terminals
+
+Example:
+
+Terminal 1 — API
+
+categorize api
+
+
+Terminal 2 — Frontend
+
+cd frontend && python -m http.server 3000
+
+✔ Keep env.yaml outside source code if sensitive
+
+(e.g., AWS keys)
+
+✔ Avoid mixing ports
+
+API → 8000
+
+Frontend → 3000
+
+✔ Use correct Fetch URL in app.html
+http://127.0.0.1:8000/classify/
+
+🎯 OPTIONAL: Run backend directly (without CLI)
+
+If you prefer:
+
+PowerShell
+uvicorn api.server:app --reload
+
+Bash
+uvicorn api.server:app --reload
+
+**🌟 Option 2 — Using pipx (Best for CLI Tools)**
 bash
 Copy code
 pip install pipx
