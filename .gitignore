@@ -2,13 +2,18 @@
 # 🧠 CATEGORIZE PROJECT GITIGNORE
 # ==============================
 
-# Virtual environments
+# ------------------------------
+# 🔹 Python Virtual Environments
+# ------------------------------
 venv/
 .venv/
 env/
 ENV/
+build_env/
 
-# Python cache / compiled files
+# ------------------------------
+# 🔹 Python cache / compiled files
+# ------------------------------
 __pycache__/
 *.pyc
 *.pyo
@@ -17,29 +22,46 @@ __pycache__/
 *.pkl
 *.log
 
-# OS-generated files
+# ------------------------------
+# 🔹 OS-generated files
+# ------------------------------
 .DS_Store
 Thumbs.db
 
-# IDE / Editor settings
+# ------------------------------
+# 🔹 IDE / Editor settings
+# ------------------------------
 .vscode/
 .idea/
 *.code-workspace
 
-# Build / packaging files
+# ------------------------------
+# 🔹 Build / PyInstaller outputs
+# ------------------------------
 build/
 dist/
+*.spec
 *.egg-info/
 .eggs/
-*.spec
+categorize.egg-info/
 
-# Local data folders
+# ------------------------------
+# 🔹 Local runtime / data folders
+# ------------------------------
 data/
 output/
 temp/
 uploads/
+__temp__/
 
-# Deployment / project notes
+# If users create analytics, txt, or extra debug logs:
+analytics/
+*.csv
+*.json
+
+# ------------------------------
+# 🔹 Test / dev-only scripts & notes
+# ------------------------------
 deploy.txt
 selected_deploy.txt
 extra.txt
@@ -48,8 +70,17 @@ folder_structure.txt
 main_old.py
 keywords.py
 
-# Miscellaneous / test artifacts
+# ------------------------------
+# 🔹 Miscellaneous / temporary
+# ------------------------------
 *.bak
 *.tmp
 *.swp
 *.sqlite3
+*.db
+
+# ------------------------------
+# 🔹 OS-specific
+# ------------------------------
+ehthumbs.db
+Desktop.ini
