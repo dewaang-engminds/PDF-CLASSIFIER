@@ -1,194 +1,149 @@
-# 🧩 CATEGORIZE — Configurable PDF Classification System
+🧩 CATEGORIZE — Configurable PDF Classification System
 
-**CATEGORIZE** is a modular and configurable pipeline that classifies PDFs into user-defined categories (Type A, Type B, Type C, etc.) based on **keywords**, **weights**, **normalization**, and **threshold logic**.
+CATEGORIZE is a modular, customizable, and lightweight pipeline that classifies PDF documents into user-defined categories (for example, Type A, Type B, Type C, etc.) using keywords, weights, normalization, and threshold-based logic.
 
-It supports both:
-- 🖥️ **CLI (Command Line Interface)**  
-- 🌐 **FastAPI Server**  
-- ☁️ **Local or AWS S3 Storage**
+It supports:
+🖥️ Command Line Interface (CLI)
+🌐 FastAPI Server
+☁️ Local or AWS S3 Storage
 
-___________________________________________________________________________________________________________________________________________________________________________
-**🚀 Installation & Usage**
-___________________________________________________________________________________________________________________________________________________________________________
-**🔹 Option 1 — Local Installation (Recommended)**
-1️⃣ Clone the repository
+🚀 Installation & Usage
+🔹 Option 1 — Local Installation (Recommended)
+
+Step 1 — Clone the Repository
+
 Windows PowerShell
 git clone https://github.com/dewaang-engminds/PDF-CLASSIFIER.git
+
 cd PDF-CLASSIFIER
 
-Mac/Linux Bash
+Mac/Linux Terminal
 git clone https://github.com/dewaang-engminds/PDF-CLASSIFIER.git
+
 cd PDF-CLASSIFIER
 
-2️⃣ Create & activate a virtual environment
+Step 2 — Create & Activate a Virtual Environment
+
 Windows PowerShell
 python -m venv venv
 venv\Scripts\activate
 
-Mac/Linux Bash
+Mac/Linux Terminal
 python3 -m venv venv
 source venv/bin/activate
 
-3️⃣ Install the package
-Both PowerShell & Bash
+Step 3 — Install the Package
 pip install .
 
 ▶️ Using the CLI
-Windows PowerShell
+
+Windows PowerShell / Mac/Linux Terminal
 categorize --config config/env.yaml
 
-Mac/Linux Bash
-categorize --config config/env.yaml
-
-
-**Example with input & output paths:**
-
+Example with input & output paths:
 categorize --input data/pdfs --output data/output --config config/env.yaml
 
-**▶️ Running the API Server**
+▶️ Running the API Server
 
-You can run via the CLI:
+You can launch the API directly via CLI.
 
-PowerShell
+PowerShell or Bash
 categorize api
-
-Bash
-categorize api
-
 
 Then open:
-
 http://127.0.0.1:8000/docs
 
-
-Best practice:
-✔ Keep terminal open
+Best Practices:
+✔ Keep the terminal open
 ✔ Upload PDFs via Swagger UI
-✔ Monitor logs in the console
+✔ Monitor logs in real-time through the console
 
-**▶️ Running the Frontend (Local Development)**
+▶️ Running the Frontend (Local Development)
 
-_The frontend is static HTML. You run a tiny local server:_
+The frontend is a static HTML interface. You can run it via a lightweight local server.
 
 Windows PowerShell
 cd frontend
 python -m http.server 3000
 
-Mac/Linux Bash
+Mac/Linux Terminal
 cd frontend
 python3 -m http.server 3000
 
-
-Now open:
-
+Then open:
 http://127.0.0.1:3000/app.html
 
-
-This frontend will interact with your API at:
-
+This frontend communicates with your API endpoint at:
 http://127.0.0.1:8000/classify/
 
-🟢 Best Practices for Frontend + API
-✔ Run frontend and API in separate terminals
+🟢 Best Practices for Frontend + API Setup
 
-Example:
+✔ Run frontend and API in separate terminals.
+• Terminal 1 — API: categorize api
+• Terminal 2 — Frontend: cd frontend && python -m http.server 3000
 
-Terminal 1 — API
+✔ Keep env.yaml outside source folder if it contains sensitive data (for example, AWS credentials).
+✔ Avoid port conflicts — API runs on port 8000 and Frontend runs on port 3000.
+✔ Ensure correct fetch URL in app.html: http://127.0.0.1:8000/classify/
 
-categorize api
+🎯 Optional: Run Backend Directly (Without CLI)
 
-
-Terminal 2 — Frontend
-
-cd frontend && python -m http.server 3000
-
-✔ Keep env.yaml outside source code if sensitive
-
-(e.g., AWS keys)
-
-✔ Avoid mixing ports
-
-API → 8000
-
-Frontend → 3000
-
-✔ Use correct Fetch URL in app.html
-http://127.0.0.1:8000/classify/
-
-🎯 OPTIONAL: Run backend directly (without CLI)
-
-If you prefer:
-
-PowerShell
+PowerShell or Bash
 uvicorn api.server:app --reload
 
-Bash
-uvicorn api.server:app --reload
+🌟 Option 2 — Using pipx (Recommended for CLI Tools)
 
-___________________________________________________________________________________________________________________________________________________________________________
-
-**🌟 Option 2 — Using pipx (Best for CLI Tools)**
-bash
-Copy code
 pip install pipx
 pipx install git+https://github.com/dewaang-engminds/PDF-CLASSIFIER.git
 
-# Run
+Run the CLI:
 categorize --config config/env.yaml
 
+💾 Option 3 — Download EXE (No Python Required)
 
-___________________________________________________________________________________________________________________________________________________________________________
-
-**💾 Option 3 — Download EXE (No Python Required)**
-🧱 Step 1: Download
+Step 1 — Download
 Go to the latest release:
-👉 PDF-CLASSIFIER Releases
+PDF-CLASSIFIER Releases (https://github.com/dewaang-engminds/PDF-CLASSIFIER/releases
+)
 
 Download categorize.zip
 
-📦 Step 2: Extract
-Unzip the archive — inside, you’ll find:
-
-Copy code
+Step 2 — Extract
+Inside, you’ll find:
 categorize.exe
-⚡ Step 3: Run
+
+Step 3 — Run
+
 ▶️ CLI Mode
-bash
-Copy code
 categorize.exe --config env.yaml
+
 🌐 API Server
-bash
-Copy code
 categorize.exe api
-# Opens: http://127.0.0.1:8000/docs
+Then open: http://127.0.0.1:8000/docs
+
 💻 Frontend UI
-bash
-Copy code
 categorize.exe ui
-# Opens: http://127.0.0.1:3000/
+Then open: http://127.0.0.1:3000/
+
 🖱️ Double-Click Mode
-Just double-click categorize.exe to launch the default mode.
+You can also double-click categorize.exe to launch the default mode.
 
-___________________________________________________________________________________________________________________________________________________________________________
+🧠 Best Practice — Virtual Environments
 
-🧠 Best Practice: Virtual Environments
-Creating a virtual environment isolates dependencies and keeps your system clean.
+Creating a virtual environment helps isolate dependencies and keep your system clean.
 
-bash
-Copy code
 python -m venv venv
 venv\Scripts\activate
 pip install .
-📂 Everything installs in:
 
-vbnet
-Copy code
+All packages install inside:
 venv\Lib\site-packages\
-🧹 To uninstall, simply delete the venv/ folder.
 
-___________________________________________________________________________________________________________________________________________________________________________
-📄 Configuration (env.yaml)
-Example snippet from config/env.yaml:
+To uninstall completely, simply delete the venv/ folder.
+
+📄 Configuration — env.yaml
+
+Below is an example configuration file:
 
 NUM_TYPES: 2
 THRESHOLD: 0.65
@@ -199,28 +154,32 @@ INPUT_PATH: "data/pdfs"
 OUTPUT_PATH: "data/output"
 
 STORAGE:
-  INPUT_MODE: "local"        # local / s3
-  OUTPUT_MODE: "local"       # local / s3
-  S3_INPUT_BUCKET: "my-input-bucket"
-  S3_OUTPUT_BUCKET: "my-output-bucket"
-  AWS_ACCESS_KEY: "YOUR_AWS_ACCESS_KEY"
-  AWS_SECRET_KEY: "YOUR_AWS_SECRET_KEY"
-  AWS_REGION: "ap-south-1"
+INPUT_MODE: "local" # local / s3
+OUTPUT_MODE: "local" # local / s3
+S3_INPUT_BUCKET: "my-input-bucket"
+S3_OUTPUT_BUCKET: "my-output-bucket"
+AWS_ACCESS_KEY: "YOUR_AWS_ACCESS_KEY"
+AWS_SECRET_KEY: "YOUR_AWS_SECRET_KEY"
+AWS_REGION: "ap-south-1"
 
 TYPES:
-  TYPE_A:
-    keywords: ["Invoice No", "GST (18%)", "Date of Purchase", "Total Amount", "Product", "Payment Mode", "Model", "Seller", "IMEI", "Warranty", "Price", "Quantity"]
-    weights:  [1.2, 1.1, 1.0, 1.3, 0.9, 1.0, 0.8, 0.9, 1.1, 0.8, 1.0, 0.9]
+TYPE_A:
+keywords: ["Invoice No", "GST (18%)", "Date of Purchase", "Total Amount", "Product", "Payment Mode", "Model", "Seller", "IMEI", "Warranty", "Price", "Quantity"]
+weights: [1.2, 1.1, 1.0, 1.3, 0.9, 1.0, 0.8, 0.9, 1.1, 0.8, 1.0, 0.9]
 
-  TYPE_B:
-    keywords: ["Bill No", "Tax Rate", "Invoice Date", "Grand Total", "Item", "Mode Of Payment", "Model Name", "Retailer", "Serial No", "Service Duration", "Rate", "Count"]
-    weights:  [1.2, 1.0, 1.1, 1.3, 0.9, 1.0, 0.8, 0.9, 1.1, 0.8, 0.9, 0.8]
-___________________________________________________________________________________________________________________________________________________________________________
+TYPE_B:
+keywords: ["Bill No", "Tax Rate", "Invoice Date", "Grand Total", "Item", "Mode Of Payment", "Model Name", "Retailer", "Serial No", "Service Duration", "Rate", "Count"]
+weights: [1.2, 1.0, 1.1, 1.3, 0.9, 1.0, 0.8, 0.9, 1.1, 0.8, 0.9, 0.8]
 
 🧾 License
+
 This project is licensed under the MIT License — you are free to use, modify, and distribute it.
 
-___________________________________________________________________________________________________________________________________________________________________________
+❤️ Contributors
 
+Dewaang Mathur — Lead Developer
 
-Contributions welcome! Feel free to submit pull requests or report issues.
+Contributions are always welcome!
+Feel free to submit pull requests or open issues.
+
+✨ Tip: Customize your categories, keywords, and thresholds in env.yaml to adapt this classifier for invoices, resumes, or any other domain-specific document classification.
