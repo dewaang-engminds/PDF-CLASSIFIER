@@ -7,32 +7,10 @@ It supports both:
 - 🌐 **FastAPI Server**  
 - ☁️ **Local or AWS S3 Storage**
 
----
-
-## ⚙️ Quick Start
-
-```bash
-# 1️⃣ Create a virtual environment
-python -m venv venv
-source venv/bin/activate      # Mac/Linux
-# or
-venv\Scripts\activate         # Windows
-
-# 2️⃣ Install dependencies
-pip install -r requirements.txt
-
-# 3️⃣ Edit config/env.yaml
-#    Define categories, keywords, weights, and thresholds.
-
-# 4️⃣ Place PDFs inside data/pdfs/
-
-# 5️⃣ Run the CLI
-python main.py --input data/pdfs --output data/output --config config/env.yaml
-
-
+___________________________________________________________________________________________________________________________________________________________________________
 **🚀 Installation & Usage**
-
-🔹 Option 1 — Local Installation (Recommended)
+___________________________________________________________________________________________________________________________________________________________________________
+**🔹 Option 1 — Local Installation (Recommended)**
 1️⃣ Clone the repository
 Windows PowerShell
 git clone https://github.com/dewaang-engminds/PDF-CLASSIFIER.git
@@ -63,11 +41,11 @@ Mac/Linux Bash
 categorize --config config/env.yaml
 
 
-Example with input & output paths:
+**Example with input & output paths:**
 
 categorize --input data/pdfs --output data/output --config config/env.yaml
 
-▶️ Running the API Server
+**▶️ Running the API Server**
 
 You can run via the CLI:
 
@@ -88,9 +66,9 @@ Best practice:
 ✔ Upload PDFs via Swagger UI
 ✔ Monitor logs in the console
 
-▶️ Running the Frontend (Local Development)
+**▶️ Running the Frontend (Local Development)**
 
-The frontend is static HTML. You run a tiny local server:
+_The frontend is static HTML. You run a tiny local server:_
 
 Windows PowerShell
 cd frontend
@@ -147,6 +125,8 @@ uvicorn api.server:app --reload
 Bash
 uvicorn api.server:app --reload
 
+___________________________________________________________________________________________________________________________________________________________________________
+
 **🌟 Option 2 — Using pipx (Best for CLI Tools)**
 bash
 Copy code
@@ -155,7 +135,11 @@ pipx install git+https://github.com/dewaang-engminds/PDF-CLASSIFIER.git
 
 # Run
 categorize --config config/env.yaml
-💾 Option 3 — Download EXE (No Python Required)
+
+
+___________________________________________________________________________________________________________________________________________________________________________
+
+**💾 Option 3 — Download EXE (No Python Required)**
 🧱 Step 1: Download
 Go to the latest release:
 👉 PDF-CLASSIFIER Releases
@@ -185,6 +169,8 @@ categorize.exe ui
 🖱️ Double-Click Mode
 Just double-click categorize.exe to launch the default mode.
 
+___________________________________________________________________________________________________________________________________________________________________________
+
 🧠 Best Practice: Virtual Environments
 Creating a virtual environment isolates dependencies and keeps your system clean.
 
@@ -200,42 +186,41 @@ Copy code
 venv\Lib\site-packages\
 🧹 To uninstall, simply delete the venv/ folder.
 
+___________________________________________________________________________________________________________________________________________________________________________
 📄 Configuration (env.yaml)
 Example snippet from config/env.yaml:
 
-yaml
-Copy code
-categories:
-  TypeA:
-    keywords: ["invoice", "bill"]
-    weight: 1.2
-  TypeB:
-    keywords: ["resume", "profile"]
-    weight: 0.8
+NUM_TYPES: 2
+THRESHOLD: 0.65
+BETA: 0.8
+EPSILON: 0.05
 
-threshold: 0.6
-storage: local
-📦 Directory Structure
-css
-Copy code
-PDF-CLASSIFIER/
-│
-├── config/
-│   └── env.yaml
-│
-├── data/
-│   ├── pdfs/
-│   └── output/
-│
-├── src/
-│   ├── main.py
-│   └── utils/
-│
-└── README.md
+INPUT_PATH: "data/pdfs"
+OUTPUT_PATH: "data/output"
+
+STORAGE:
+  INPUT_MODE: "local"        # local / s3
+  OUTPUT_MODE: "local"       # local / s3
+  S3_INPUT_BUCKET: "my-input-bucket"
+  S3_OUTPUT_BUCKET: "my-output-bucket"
+  AWS_ACCESS_KEY: "YOUR_AWS_ACCESS_KEY"
+  AWS_SECRET_KEY: "YOUR_AWS_SECRET_KEY"
+  AWS_REGION: "ap-south-1"
+
+TYPES:
+  TYPE_A:
+    keywords: ["Invoice No", "GST (18%)", "Date of Purchase", "Total Amount", "Product", "Payment Mode", "Model", "Seller", "IMEI", "Warranty", "Price", "Quantity"]
+    weights:  [1.2, 1.1, 1.0, 1.3, 0.9, 1.0, 0.8, 0.9, 1.1, 0.8, 1.0, 0.9]
+
+  TYPE_B:
+    keywords: ["Bill No", "Tax Rate", "Invoice Date", "Grand Total", "Item", "Mode Of Payment", "Model Name", "Retailer", "Serial No", "Service Duration", "Rate", "Count"]
+    weights:  [1.2, 1.0, 1.1, 1.3, 0.9, 1.0, 0.8, 0.9, 1.1, 0.8, 0.9, 0.8]
+___________________________________________________________________________________________________________________________________________________________________________
+
 🧾 License
 This project is licensed under the MIT License — you are free to use, modify, and distribute it.
 
-❤️ Contributors
-Dewaang Mathur — Lead Developer
+___________________________________________________________________________________________________________________________________________________________________________
+
 
 Contributions welcome! Feel free to submit pull requests or report issues.
