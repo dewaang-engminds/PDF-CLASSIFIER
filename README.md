@@ -92,3 +92,41 @@ categorize --config config/env.yaml
 
 categorize.exe --config env.yaml
 
+
+
+
+
+
+**************************************************************************************************************************
+
+# EXE Installation (No Python Required)
+
+## 1. Download
+Go to:
+https://github.com/dewaang-engminds/PDF-CLASSIFIER/releases/latest
+
+Download `categorize.zip`.
+
+## 2. Extract
+Unzip the file. Inside you will find:
+
+    categorize.exe
+
+## 3. Run
+
+### CLI mode
+categorize.exe --config env.yaml
+
+### API server
+categorize.exe api
+Open in browser: http://127.0.0.1:8000/docs
+
+### Frontend UI
+categorize.exe ui
+Open in browser: http://127.0.0.1:3000/
+
+### Double-click
+Double-click `categorize.exe` to launch default mode.
+
+
+**************************************************************************************************************************
