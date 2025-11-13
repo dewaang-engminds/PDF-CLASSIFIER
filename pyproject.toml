@@ -23,11 +23,11 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/dewaang-engminds/PDF-CLASSIFIER.git"
+Homepage = "https://github.com/dewaang-engminds/PDF-CLASSIFIER"
 Issues = "https://github.com/dewaang-engminds/PDF-CLASSIFIER/issues"
 
 [project.scripts]
-categorize = "main:cli"
+categorize = "categorize.main:cli"
 
 [tool.setuptools.packages.find]
-include = ["api", "config", "pipeline", "utils"]
+include = ["categorize", "categorize.*"]
