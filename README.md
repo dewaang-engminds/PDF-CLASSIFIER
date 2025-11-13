@@ -28,7 +28,7 @@ python main.py --input data/pdfs --output data/output --config config/env.yaml
 ****✅ How users will now install and run****
 **🔹 Local installation**
 git clone https://github.com/dewaang-engminds/PDF-CLASSIFIER.git
-cd categorize
+cd PDF-CLASSIFIER
 pip install .
 
 **🔹 Run the CLI**
