@@ -10,6 +10,7 @@ venv/
 env/
 ENV/
 build_env/
+*.zip
 
 # ------------------------------
 # 🔹 Python cache / compiled files
